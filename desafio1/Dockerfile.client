@@ -1,0 +1,16 @@
+# Dockerfile para o cliente que faz requisições
+FROM alpine:latest
+
+# Instala curl e jq para fazer requisições e formatar JSON
+RUN apk add --no-cache curl jq bash
+
+WORKDIR /app
+
+# Copia o script do cliente
+COPY client.sh .
+
+# Dá permissão de execução
+RUN chmod +x client.sh
+
+# Executa o script
+CMD ["./client.sh"]

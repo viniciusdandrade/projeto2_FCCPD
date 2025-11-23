@@ -1,0 +1,16 @@
+# Dockerfile para o servidor web Flask
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Instala as dependências
+RUN pip install --no-cache-dir flask
+
+# Copia o código do servidor
+COPY server.py .
+
+# Expõe a porta 8080
+EXPOSE 8080
+
+# Comando para iniciar o servidor
+CMD ["python", "server.py"]
