@@ -6,28 +6,6 @@ Este desafio demonstra o uso do Docker Compose para orquestrar múltiplos servi�
 
 ## Arquitetura
 
-```
-┌────────────────────────────────────────────────────┐
-│              Docker Compose Stack                   │
-│                                                     │
-│  ┌─────────────┐    ┌──────────────┐    ┌────────┐│
-│  │     web     │───►│      db      │    │ cache  ││
-│  │  Flask:5000 │    │ PostgreSQL   │    │ Redis  ││
-│  │             │    │    :5432     │    │ :6379  ││
-│  └──────┬──────┘    └──────────────┘    └───▲────┘│
-│         │                                    │     │
-│         └────────────────────────────────────┘     │
-│                                                     │
-│         Network: desafio3-network                   │
-│                                                     │
-│  Volumes:                                           │
-│    - db-data (PostgreSQL data)                      │
-│    - cache-data (Redis persistence)                 │
-└────────────────────────────────────────────────────┘
-         │
-    Host:5000
-```
-
 ### Componentes:
 
 #### 1. **Web Service** (Flask API)
@@ -73,15 +51,9 @@ Este desafio demonstra o uso do Docker Compose para orquestrar múltiplos servi�
 
 ### Arquitetura de Três Camadas
 
-```
-┌─────────────────────────────────────────┐
-│  Presentation Layer (Web - Flask)       │ ← API REST
-├─────────────────────────────────────────┤
-│  Caching Layer (Cache - Redis)          │ ← Performance
-├─────────────────────────────────────────┤
-│  Data Layer (DB - PostgreSQL)           │ ← Persistência
-└─────────────────────────────────────────┘
-```
+- **Presentation Layer (Web - Flask)**: API REST
+- **Caching Layer (Cache - Redis)**: Performance
+- **Data Layer (DB - PostgreSQL)**: Persistência
 
 ### Estratégia de Cache
 
@@ -749,34 +721,6 @@ volumes:
 
 - Inicialização automática do banco
 - Esquema criado na primeira execução
-
-## Conceitos Avançados
-
-### Docker Compose vs Kubernetes
-
-| Característica | Docker Compose | Kubernetes         |
-| -------------- | -------------- | ------------------ |
-| Complexidade   | Baixa          | Alta               |
-| Escala         | Single host    | Multi-host cluster |
-| Uso            | Dev/Testing    | Produção           |
-| Aprendizado    | Rápido         | Longo              |
-| Features       | Básicas        | Avançadas          |
-
-### Quando usar Docker Compose?
-
-- Desenvolvimento local
-- Ambientes de teste
-- Aplicações pequenas/médias
-- Prototipação rápida
-- CI/CD pipelines
-
-### Quando migrar para Kubernetes?
-
-- Alta disponibilidade crítica
-- Auto-scaling necessário
-- Multi-datacenter
-- Milhares de containers
-- Orquestração complexa
 
 ## Conceitos Aprendidos
 

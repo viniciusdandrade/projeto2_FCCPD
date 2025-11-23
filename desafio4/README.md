@@ -6,21 +6,6 @@ Este desafio implementa dois microsserviços independentes que se comunicam via 
 
 ## Arquitetura
 
-```
-┌──────────────────────────────────────────────────┐
-│          Rede: microservices-network              │
-│                                                   │
-│   ┌─────────────┐           ┌─────────────┐     │
-│   │  Service A  │           │  Service B  │     │
-│   │   (Users)   │◄──────────┤ (User Info) │     │
-│   │   :5001     │  HTTP GET │   :5002     │     │
-│   └──────┬──────┘           └──────┬──────┘     │
-│          │                         │             │
-└──────────┼─────────────────────────┼─────────────┘
-           │                         │
-      Host:5001                 Host:5002
-```
-
 ### Componentes:
 
 #### **Service A - User Service** (Porta 5001)

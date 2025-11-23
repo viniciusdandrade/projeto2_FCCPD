@@ -6,21 +6,6 @@ Este desafio demonstra a comunicação entre dois containers Docker através de 
 
 ## Arquitetura
 
-```
-┌─────────────────────────────────────┐
-│     Rede: desafio1-network          │
-│                                     │
-│  ┌──────────────┐  ┌─────────────┐ │
-│  │  web-server  │  │ web-client  │ │
-│  │              │◄─┤             │ │
-│  │  Flask:8080  │  │  curl loop  │ │
-│  └──────┬───────┘  └─────────────┘ │
-│         │                           │
-└─────────┼───────────────────────────┘
-          │
-      Host:8080
-```
-
 ### Componentes:
 
 1. **web-server**: Container com servidor Flask

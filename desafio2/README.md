@@ -6,25 +6,6 @@ Este desafio demonstra o uso de volumes Docker para persistência de dados. Uma 
 
 ## Arquitetura
 
-```
-┌──────────────────────────────────────────┐
-│            Docker Host                    │
-│                                           │
-│  ┌─────────────┐     ┌─────────────┐    │
-│  │ db-writer   │     │ db-reader   │    │
-│  │ (app.py)    │     │ (reader.py) │    │
-│  └──────┬──────┘     └──────┬──────┘    │
-│         │                   │            │
-│         └────────┬──────────┘            │
-│                  │                        │
-│         ┌────────▼────────┐              │
-│         │   db-volume     │              │
-│         │  /data/users.db │              │
-│         └─────────────────┘              │
-│                                           │
-└──────────────────────────────────────────┘
-```
-
 ### Componentes:
 
 1. **db-writer (app.py)**: Container que escreve dados
@@ -387,33 +368,6 @@ cat /data/users.db  # (binário, não será legível)
 - [5 pts] Persistência comprovada: Dados persistem após remover containers
 - [5 pts] README com explicação e prints/resultados: Documentação completa com exemplos detalhados
 - [5 pts] Clareza e organização do código: Código bem comentado, estruturado e com logs descritivos
-
-## Conceitos Avançados
-
-### Volumes vs Bind Mounts
-
-| Característica | Volumes         | Bind Mounts                 |
-| -------------- | --------------- | --------------------------- |
-| Gerenciamento  | Docker          | Sistema de arquivos do host |
-| Portabilidade  | Alta            | Baixa                       |
-| Performance    | Otimizada       | Depende do host             |
-| Backup         | Comandos Docker | Ferramentas do SO           |
-| Uso            | Produção        | Desenvolvimento             |
-
-### Quando usar Volumes?
-
-- Dados de produção
-- Dados que precisam persistir
-- Compartilhamento entre containers
-- Backups automatizados
-- Portabilidade entre ambientes
-
-### Quando usar Bind Mounts?
-
-- Desenvolvimento (hot reload)
-- Compartilhar arquivos de config do host
-- Acesso direto aos arquivos
-- Logs que precisam ser analisados no host
 
 ## Boas Práticas
 
