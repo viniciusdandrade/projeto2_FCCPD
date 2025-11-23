@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  # Serviço Web - Aplicação Flask
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: web-app
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - DATABASE_URL=postgresql://user:password@db:5432/appdb
+      - REDIS_HOST=cache
+      - REDIS_PORT=6379
+    depends_on:
+      - db
+      - cache
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # Serviço de Banco de Dados - PostgreSQL
+  db:
+    image: postgres:15-alpine
+    container_name: postgres-db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=appdb
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d appdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Serviço de Cache - Redis
+  cache:
+    image: redis:7-alpine
+    container_name: redis-cache
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - cache-data:/data
+    networks:
+      - app-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+# Volumes para persistência de dados
+volumes:
+  db-data:
+    name: desafio3-db-data
+  cache-data:
+    name: desafio3-cache-data
+
+# Rede interna para comunicação entre serviços
+networks:
+  app-network:
+    name: desafio3-network
+    driver: bridge

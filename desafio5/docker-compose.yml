@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # Microsserviço de Usuários
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    container_name: user-service
+    networks:
+      - gateway-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Microsserviço de Pedidos
+  order-service:
+    build:
+      context: ./order-service
+      dockerfile: Dockerfile
+    container_name: order-service
+    networks:
+      - gateway-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5002/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # API Gateway - Ponto único de entrada
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    ports:
+      - "5000:5000"
+    environment:
+      - USER_SERVICE_URL=http://user-service:5001
+      - ORDER_SERVICE_URL=http://order-service:5002
+    depends_on:
+      - user-service
+      - order-service
+    networks:
+      - gateway-network
+    restart: unless-stopped
+
+networks:
+  gateway-network:
+    name: desafio5-network
+    driver: bridge

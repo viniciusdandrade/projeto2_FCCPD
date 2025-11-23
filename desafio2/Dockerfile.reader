@@ -1,0 +1,16 @@
+# Dockerfile para a aplicação leitora
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Copia o código do leitor
+COPY reader.py .
+
+# Cria o diretório para o volume
+RUN mkdir -p /data
+
+# Define o volume
+VOLUME ["/data"]
+
+# Executa a aplicação leitora
+CMD ["python", "reader.py"]
