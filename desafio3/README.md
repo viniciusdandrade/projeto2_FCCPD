@@ -607,29 +607,8 @@ docker network inspect desafio3-network
 # Listar volumes
 docker volume ls
 
-# Inspecionar volume
 docker volume inspect desafio3-db-data
 ```
-
-## Critérios Atendidos
-
-- [10 pts] Compose funcional e bem estruturado:
-  - Arquivo docker-compose.yml completo e organizado
-  - Uso correto de serviços, volumes, redes e variáveis
-- [5 pts] Comunicação entre serviços funcionando:
-  - Web se comunica com DB e Cache
-  - DNS interno funcionando
-  - Dependências configuradas corretamente
-- [5 pts] README com explicação da arquitetura:
-  - Documentação completa e detalhada
-  - Diagramas e explicações de fluxo
-  - Exemplos práticos
-- [5 pts] Clareza e boas práticas:
-  - Código bem comentado
-  - Health checks implementados
-  - Volumes para persistência
-  - Restart policies
-  - Estrutura de projeto organizada
 
 ## Boas Práticas Implementadas
 

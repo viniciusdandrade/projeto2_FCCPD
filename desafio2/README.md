@@ -362,13 +362,6 @@ ls -lh /data/
 cat /data/users.db  # (binário, não será legível)
 ```
 
-## Critérios Atendidos
-
-- [5 pts] Uso correto de volumes: Volume nomeado db-volume configurado corretamente
-- [5 pts] Persistência comprovada: Dados persistem após remover containers
-- [5 pts] README com explicação e prints/resultados: Documentação completa com exemplos detalhados
-- [5 pts] Clareza e organização do código: Código bem comentado, estruturado e com logs descritivos
-
 ## Boas Práticas
 
 1. Use volumes nomeados em produção

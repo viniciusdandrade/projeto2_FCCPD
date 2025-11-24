@@ -275,13 +275,6 @@ docker stats web-server web-client
 docker restart web-server web-client
 ```
 
-## Critérios Atendidos
-
-- [5 pts] Configuração correta da rede Docker: Rede customizada desafio1-network criada e configurada
-- [5 pts] Comunicação funcional entre containers: Cliente e servidor se comunicam via HTTP usando nomes DNS
-- [5 pts] Explicação clara no README: Documentação completa com arquitetura, decisões técnicas e exemplos
-- [5 pts] Organização do projeto e scripts de execução: Scripts automatizados para setup e limpeza, código organizado
-
 ## Segurança e Boas Práticas
 
 1. **Imagens oficiais**: Uso de `python:3.11-slim` e `alpine:latest`

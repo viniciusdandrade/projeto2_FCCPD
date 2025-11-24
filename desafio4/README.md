@@ -435,31 +435,6 @@ docker start service-a
 curl http://localhost:5002/user-info
 ```
 
-## Critérios Atendidos
-
-- [5 pts] Funcionamento da comunicação entre microsserviços:
-
-  - Service B consome Service A via HTTP
-  - Comunicação funcional com tratamento de erros
-  - Health checks verificam conectividade
-
-- [5 pts] Dockerfiles e isolamento corretos:
-
-  - Dockerfile separado para cada serviço
-  - Containers isolados com portas próprias
-  - Rede customizada para comunicação
-
-- [5 pts] Explicação clara da arquitetura e endpoints:
-
-  - Documentação completa com diagramas
-  - Descrição de cada endpoint
-  - Exemplos de request/response
-
-- [5 pts] Clareza e originalidade da implementação:
-  - Código bem organizado e comentado
-  - Enriquecimento de dados demonstra valor agregado
-  - Scripts automatizados para facilitar uso
-
 ## Padrões e Boas Práticas
 
 ### 1. **Service Discovery via DNS**

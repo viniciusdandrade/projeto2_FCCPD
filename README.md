@@ -337,26 +337,6 @@ cd desafio5
 ./test.sh
 ```
 
-## Critérios de Avaliação
-
-| Critério                        | Peso | Status                             |
-| ------------------------------- | ---- | ---------------------------------- |
-| **Funcionamento técnico**       | 40%  | Completo                           |
-| Sistema cumpre requisitos       |      | Todos os 5 desafios funcionais     |
-| Executa corretamente em Docker  |      | Testado e validado                 |
-| **Explicação no README**        | 30%  | Completo                           |
-| Clareza e detalhamento          |      | READMEs extensivos com diagramas   |
-| Domínio do conteúdo             |      | Conceitos explicados profundamente |
-| **Organização e boas práticas** | 20%  | Completo                           |
-| Estrutura de pastas             |      | Organização clara por desafio      |
-| Dockerfiles limpos              |      | Seguindo best practices            |
-| Scripts automatizados           |      | run.sh, test.sh, cleanup.sh        |
-| **Originalidade / Autoria**     | 10%  | Completo                           |
-| Soluções únicas                 |      | Implementações originais           |
-| Código próprio                  |      | Desenvolvido do zero               |
-
-**Pontuação Total:** 110 pontos possíveis
-
 ## Conceitos Abordados
 
 ### Docker Fundamentals
