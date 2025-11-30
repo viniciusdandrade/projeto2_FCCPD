@@ -27,25 +27,6 @@ Este desafio demonstra a comunicação entre dois containers Docker através de 
    - Permite resolução de nomes entre containers
    - Isolamento dos containers do desafio
 
-## Decisões Técnicas
-
-### Por que Flask?
-
-- Framework leve e simples para criar APIs REST
-- Fácil de containerizar
-- Perfeito para demonstrar comunicação HTTP
-
-### Por que Alpine Linux para o cliente?
-
-- Imagem extremamente leve (~5MB)
-- Possui os pacotes necessários (curl, jq)
-- Ideal para containers que executam scripts
-
-### Rede Customizada
-
-- Permite que containers se comuniquem usando nomes (DNS interno)
-- O cliente pode acessar o servidor via `http://web-server:8080`
-- Isolamento: apenas containers na mesma rede podem se comunicar
 
 ## Como Executar
 
@@ -249,46 +230,3 @@ docker run --rm alpine:latest wget -O- http://web-server:8080
 # Deve falhar pois não está na mesma rede
 ```
 
-## Comandos Úteis
-
-```bash
-# Ver todos os containers
-docker ps -a
-
-# Ver logs em tempo real
-docker logs -f web-server
-docker logs -f web-client
-
-# Inspecionar container
-docker inspect web-server
-
-# Entrar no container do servidor
-docker exec -it web-server bash
-
-# Entrar no container do cliente
-docker exec -it web-client sh
-
-# Ver estatísticas de uso
-docker stats web-server web-client
-
-# Reiniciar containers
-docker restart web-server web-client
-```
-
-## Segurança e Boas Práticas
-
-1. **Imagens oficiais**: Uso de `python:3.11-slim` e `alpine:latest`
-2. **Não-root**: Containers não executam como root (boas práticas)
-3. **Isolamento**: Rede customizada isola os containers
-4. **Logs estruturados**: Logging adequado para debugging
-5. **Health checks**: Endpoint `/health` para monitoramento
-
-## Conceitos Aprendidos
-
-- Criação e configuração de redes Docker
-- Comunicação inter-container usando DNS
-- Dockerfiles multi-estágio
-- Port binding e port mapping
-- Container orchestration básica
-- Logging e debugging de containers
-- Scripts de automação para Docker
