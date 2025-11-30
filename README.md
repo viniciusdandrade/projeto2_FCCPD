@@ -3,19 +3,8 @@
 ## Sobre o Projeto
 
 Este repositório contém a implementação completa de 5 desafios práticos focados em **Docker** e **Microsserviços**, cobrindo desde conceitos básicos até arquiteturas avançadas com API Gateway.
-
-**Disciplina:** Fundamentos de Computação em Nuvem e Processamento Distribuído (FCCPD)  
-**Foco:** Containerização, Orquestração e Arquitetura de Microsserviços  
+ 
 **Tecnologias:** Docker, Docker Compose, Python, Flask, PostgreSQL, Redis
-
-## Objetivos
-
-- Dominar conceitos fundamentais de Docker e containerização
-- Implementar comunicação entre containers
-- Gerenciar persistência de dados com volumes
-- Orquestrar múltiplos serviços com Docker Compose
-- Desenvolver arquiteturas de microsserviços
-- Implementar API Gateway como ponto único de entrada
 
 ## Estrutura do Repositório
 
@@ -85,7 +74,7 @@ projeto2_FCCPD/
 
 ## Desafios Implementados
 
-### Desafio 1 - Containers em Rede (20 pontos)
+### Desafio 1 - Containers em Rede
 
 **Objetivo:** Demonstrar comunicação entre containers via rede Docker customizada.
 
@@ -110,7 +99,7 @@ chmod +x run.sh cleanup.sh
 
 ---
 
-### Desafio 2 - Volumes e Persistência (20 pontos)
+### Desafio 2 - Volumes e Persistência
 
 **Objetivo:** Demonstrar persistência de dados usando volumes Docker.
 
@@ -135,7 +124,7 @@ chmod +x run.sh demo.sh cleanup.sh
 
 ---
 
-### Desafio 3 - Docker Compose Orquestrando Serviços (25 pontos)
+### Desafio 3 - Docker Compose Orquestrando Serviços 
 
 **Objetivo:** Usar Docker Compose para orquestrar múltiplos serviços dependentes.
 
@@ -160,7 +149,7 @@ chmod +x run.sh test.sh cleanup.sh
 
 ---
 
-### Desafio 4 - Microsserviços Independentes (20 pontos)
+### Desafio 4 - Microsserviços Independentes 
 
 **Objetivo:** Criar dois microsserviços independentes que se comunicam via HTTP.
 
@@ -185,7 +174,7 @@ chmod +x run.sh test.sh cleanup.sh
 
 ---
 
-### Desafio 5 - Microsserviços com API Gateway (25 pontos)
+### Desafio 5 - Microsserviços com API Gateway 
 
 **Objetivo:** Criar arquitetura com API Gateway centralizando acesso aos microsserviços.
 
@@ -337,159 +326,11 @@ cd desafio5
 ./test.sh
 ```
 
-## Conceitos Abordados
-
-### Docker Fundamentals
-
-- Containers e imagens
-- Dockerfiles e build
-- Redes Docker (bridge, custom)
-- Volumes e persistência
-- Port binding e exposição
-- Multi-stage builds
-
-### Docker Compose
-
-- Orquestração de serviços
-- Dependências entre serviços
-- Variáveis de ambiente
-- Health checks
-- Restart policies
-- Volumes e redes
-
-### Microsserviços
-
-- Arquitetura de microsserviços
-- Comunicação HTTP/REST
-- Service discovery
-- API Gateway pattern
-- Agregação de dados
-- Separação de responsabilidades
-
-### Boas Práticas
-
-- Imagens Alpine (leves)
-- Imagens oficiais
-- Logs estruturados
-- Tratamento de erros
-- Health checks
-- Configuração via env vars
-- Documentação clara
-
-## Troubleshooting
-
-### Problemas Comuns
-
-#### 1. Porta já em uso
-
-```bash
-# Erro: port is already allocated
-# Solução: Parar o processo usando a porta
-sudo lsof -i :5000
-sudo kill -9 <PID>
-```
-
-#### 2. Docker daemon não está rodando
-
-```bash
-# Erro: Cannot connect to the Docker daemon
-# Solução: Iniciar Docker
-sudo systemctl start docker  # Linux
-# ou iniciar Docker Desktop (Windows/Mac)
-```
-
-#### 3. Permissão negada
-
-```bash
-# Erro: permission denied
-# Solução: Adicionar usuário ao grupo docker
-sudo usermod -aG docker $USER
-# Fazer logout e login novamente
-```
-
-#### 4. Containers não se comunicam
-
-```bash
-# Verificar se estão na mesma rede
-docker network inspect <network-name>
-
-# Testar conectividade
-docker exec <container> ping <other-container>
-```
-
-#### 5. Volume não persiste dados
-
-```bash
-# Verificar se o volume existe
-docker volume ls
-docker volume inspect <volume-name>
-
-# Verificar montagem
-docker inspect <container> | grep Mounts -A 10
-```
-
-## Recursos Adicionais
-
-### Documentação Oficial
-
-- [Docker Documentation](https://docs.docker.com/)
-- [Docker Compose Documentation](https://docs.docker.com/compose/)
-- [Docker Best Practices](https://docs.docker.com/develop/dev-best-practices/)
-
-### Tutoriais
-
-- [Docker Getting Started](https://docs.docker.com/get-started/)
-- [Microservices Architecture](https://microservices.io/)
-- [12 Factor App](https://12factor.net/)
-
-### Ferramentas Úteis
-
-- [Docker Desktop](https://www.docker.com/products/docker-desktop)
-- [Portainer](https://www.portainer.io/) - UI para gerenciar Docker
-- [Dive](https://github.com/wagoodman/dive) - Explorar imagens Docker
-- [Lazydocker](https://github.com/jesseduffield/lazydocker) - Terminal UI para Docker
-
-## Contribuição
-
-Este é um projeto acadêmico individual, mas sugestões são bem-vindas!
-
-### Como Reportar Issues
-
-1. Acesse a aba [Issues](https://github.com/viniciusdandrade/projeto2_FCCPD/issues)
-2. Clique em "New Issue"
-3. Descreva o problema ou sugestão
-
-## Licença
-
-Este projeto é desenvolvido para fins educacionais.
-
 ## Autor
 
-**Vinícius D'Andrade**
+**Vinícius De Andrade**
 
 - GitHub: [@viniciusdandrade](https://github.com/viniciusdandrade)
 - Repositório: [projeto2_FCCPD](https://github.com/viniciusdandrade/projeto2_FCCPD)
 
----
 
-## Conclusão
-
-Este projeto demonstra profundo conhecimento em:
-
-- Containerização com Docker
-- Orquestração de serviços
-- Arquitetura de Microsserviços
-- Boas práticas de desenvolvimento
-- Documentação técnica completa
-
-Cada desafio foi cuidadosamente implementado com foco em:
-
-- Funcionalidade completa
-- Código limpo e bem organizado
-- Documentação extensiva
-- Scripts automatizados
-- Tratamento de erros
-- Logs detalhados
-- Facilidade de uso
-
-**Status:** Todos os 5 desafios implementados e documentados
